@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 
@@ -6,6 +7,17 @@
 <h1 class="text-center mt-5 text-info"> Bienvenue sur notre site</h1>
  {% if app.user %}
 <h2 class="text-center mt-5 text-success">{{ user.first_name }} {{ user.last_name }} </h2>
+<h6 class="text-center mt-5 text-warning">Role :
+{% for role in user.roles %}
+    <strong>{{role}}</strong>
+{% endfor %}
+    
+ </h6>
+{#  <h6>{{url('home')}}</h6> #}
+<div class=" offset-lg-4 col-lg-4 mx-auto">
+
+ <img style="text-align:center" src="{{absolute_url(asset('assets/images/avatar-homme1.png'))}}" >
+</div>
  {% endif %}
  
 {% endblock %}

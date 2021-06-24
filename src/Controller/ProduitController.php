@@ -23,6 +23,7 @@ class ProduitController extends AbstractController
     public function home()
     {
         $user=$this->getUser();
+        
         return $this->render('index.html.twig',compact('user'));
     }
 
