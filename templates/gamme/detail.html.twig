@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail gamme{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Detail de Gamme</h1>
+<div class="col-md-8 mx-auto">
+
+<div class="card text-black bg-light mb-3 mx-auto text-center" style="max-width: 30rem;">
+ 
+  <div class="card-body">
+    <h5 class="card-title">{{gamme.nom}}</h5>
+    <p class="card-text">{{gamme.description}}</p>
+     <div class="mx-auto"> <a class="btn btn-warning text-center" href="{{path('gamme_edit',{'id':gamme.id})}}">Edit Gamme</a></div>
+  </div>
+</div>
+
+   
+</div>
+
+{% endblock %}

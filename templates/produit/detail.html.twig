@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail produit{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Detail de produit</h1>
+<div class="col-md-8 mx-auto">
+
+<div class="card text-black bg-light mb-3 mx-auto text-center" style="max-width: 30rem;">
+  <div class="card-header">Gamme: {{produit.gamme.nom}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{produit.libelle}}</h5>
+    <p class="card-text">{{produit.description}}</p>
+    <p class="card-text">prix: {{produit.prix}}</p>
+    <p class="card-text">quantité:  {{produit.quantite}}</p>
+    <div class="mx-auto"> <a class="btn btn-warning text-center" href="{{path('produit_edit',{'id':produit.id})}}">Edit Produit</a></div>
+  </div>
+</div>
+  
+</div>
+
+{% endblock %}

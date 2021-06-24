@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des Gammes{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Liste des Gammes</h1>
+  {% if app.user %}
+<div class="col-md-8 mx-auto"><a href="{{path('add_gamme')}}" class="btn btn-success">Ajouter Gamme</a></div>
+  {% endif %}
+<div class="col-md-8 mx-auto">
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        
+         {% if app.user %}
+        <th scope="col">Action</th>
+         {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for gamme in gammes %}
+
+        <tr>
+                <th scope="row">{{gamme.id}}</th>
+                <td>{{ gamme.nom }}</td>
+            
+                {% if app.user %}
+                <td>
+                    <a class="btn btn-info" href="{{path('detail_gamme',{'id':gamme.id})}}">show detail</a>
+                    <a class="btn btn-danger" href="{{path('delete_gamme',{'id':gamme.id})}}">delete gamme</a>
+                
+                </td>
+                 {% endif %}
+        </tr>
+
+    {% else %}
+
+    No Gammes have been found.
+        
+    {% endfor %}
+        
+        
+    </tbody>
+    </table>
+</div>
+
+{% endblock %}
+

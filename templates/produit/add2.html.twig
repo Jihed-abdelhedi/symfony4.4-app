@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout produit{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Ajout d'un produit avec objet Form</h1>
+<div class="col-md-8 mx-auto">
+{{ form(formProduit) }}
+</div>
+
+{% endblock %}

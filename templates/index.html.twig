@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<h1 class="text-center mt-5 text-info"> Bienvenue sur notre site</h1>
+ {% if app.user %}
+<h2 class="text-center mt-5 text-success">{{ user.first_name }} {{ user.last_name }} </h2>
+ {% endif %}
+ 
+{% endblock %}

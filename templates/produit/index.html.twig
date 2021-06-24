@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des produits{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Liste des produits</h1>
+{% if app.user %}
+<div class="col-md-8 mx-auto"><a href="{{path('add_produit1')}}" class="btn btn-success">Ajouter Produit</a></div>
+   {% endif %}
+<div class="col-md-8 mx-auto">
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Libelle</th>
+        
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+         {% if app.user %}
+        <th scope="col">Action</th>
+         {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for produit in produits %}
+
+        <tr>
+                <th scope="row">{{produit.id}}</th>
+                <td>{{ produit.libelle }}</td>
+            
+                <td>{{ produit.prix}}</td>
+                <td>{{ produit.quantite}}</td>
+                {% if app.user %}
+                <td>
+                    <a class="btn btn-info" href="{{path('detail',{'id':produit.id})}}">show detail</a>
+                    <a class="btn btn-danger" href="{{path('delete_produit',{'id':produit.id})}}">delete detail</a>
+                
+                </td>
+                 {% endif %}
+        </tr>
+        
+    {% endfor %}
+        
+        
+    </tbody>
+    </table>
+</div>
+
+{% endblock %}
