@@ -63,10 +63,10 @@ class ProduitController extends AbstractController
         // $em=$doctrine->getManager();
         $em->remove($produit);
         $em->flush();
-
-       
         return $this->redirectToRoute('produit');
     }
+
+       
 
     
 
@@ -134,7 +134,16 @@ class ProduitController extends AbstractController
      */
     public function add1(EntityManagerInterface $em,Request $request)
     {
-
+        if($this->getUser() == null){
+            $this->addFlash('warning', 'please log in');
+            return $this->redirectToRoute('home');
+        }
+        $roleUser = $this->getUser()->getRoles();
+       if( !in_array('ROLE_ADMIN',$roleUser))
+       {
+        $this->addFlash('danger', 'Access Denied');
+        return $this->redirectToRoute('home');
+       }
         $produit = new Produit();
         $form = $this->createFormBuilder($produit)->add('gamme',EntityType::class,['class'=> Gamme::class,'choice_label'=>'nom','label'=>'Gamme'])
                                                 ->add('libelle')
@@ -150,7 +159,7 @@ class ProduitController extends AbstractController
             {
                 $em->persist($produit);
                 $em->flush();
-        
+                $this->addFlash('success', 'success');
                return $this->redirectToRoute('produit');
             }
        }

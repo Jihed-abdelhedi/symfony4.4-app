@@ -9,10 +9,14 @@
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
         <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}"> 
-
+       
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,11 +26,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor01">
+    <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" href="{{path('home')}}">Home
-            <span class="visually-hidden">(current)</span>
+           
           </a>
         </li>
         <li class="nav-item">
@@ -38,16 +42,42 @@
        
      
       </ul>
+      <div>
        {% if app.user %}
-        <a class="nav-link float-right btn btn-info text-white " href="{{path('app_logout')}}">Logout</a>
+        <a class="  btn btn-info text-white " href="{{path('app_logout')}}">Logout</a>
        {% else %}
-       <a class="nav-link float-right btn btn-info text-white " href="{{path('app_login')}}">Login</a>
-       <a class="nav-link float-right btn btn-info text-white m-2 " href="{{path('app_register')}}">Register</a>
+       <a class="  btn btn-info text-white " href="{{path('app_login')}}">Login</a>
+       <a class="  btn btn-info text-white m-2 " href="{{path('app_register')}}">Register</a>
         {% endif %}
+      </div>
    
     </div>
   </div>
 </nav>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible fade show" style="width:30%;margin:auto;margin-top:30px;text-align:center">
+                {{ message }}
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger alert-dismissible fade show" style="width:30%;margin:auto;margin-top:30px;text-align:center">
+                {{ message }}
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endfor %}
+
+         {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning alert-dismissible fade show" style="width:30%;margin:auto;margin-top:30px;text-align:center">
+                {{ message }}
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+          {% endfor %}
+
+      
+
         {% block body %}{% endblock %}
+         <script src="{{ asset('assets/js/main.js')}}"></script>
     </body>
 </html>

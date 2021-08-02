@@ -36,3 +36,12 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+         #- { path: ^/produit/add1, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+
+        - { path: ^/produit/delete/, roles: ROLE_ADMIN }
+        - { path: ^/produit/edit/, roles: ROLE_ADMIN }
+        - { path: ^/gamme/edit/, roles: ROLE_ADMIN }
+        - { path: ^/gamme/add, roles: ROLE_ADMIN }
+        - { path: ^/gamme/delete/, roles: ROLE_ADMIN }
